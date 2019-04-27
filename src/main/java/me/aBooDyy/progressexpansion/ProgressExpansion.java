@@ -31,7 +31,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
     @Override
     public Map<String, Object> getDefaults() {
         Map<String, Object> defaults = new HashMap<>();
-        defaults.put("competed", "&a\u25A0");
+        defaults.put("completed", "&a\u25A0");
         defaults.put("in_progress", "&e\u25A0");
         defaults.put("remaining", "&7\u25A0");
         defaults.put("bar.length", 10);
@@ -40,7 +40,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
         return defaults;
     }
 
-    private String competed, inProgress, remaining, full;
+    private String completed, inProgress, remaining, full;
     private int progress, length, max, barLength;
     private Double placeholder, amtPerSymbol;
 
@@ -48,7 +48,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
     public String onRequest(OfflinePlayer p, String identifier) {
         if (p == null) return null;
         if (identifier.startsWith("bar_")) {
-            competed = this.getString("competed", "&a\u25A0");
+            completed = this.getString("completed", "&a\u25A0");
             inProgress = this.getString("in_progress", "&e\u25A0");
             remaining = this.getString("remaining", "&7\u25A0");
             full = this.getString("bar.full", "&aCompleted");
@@ -63,7 +63,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             placeholder = Double.valueOf(args[0]);
             for (String arg : args) {
                 if (arg.startsWith("c:")) {
-                    competed = arg.replace("c:", "");
+                    completed = arg.replace("c:", "");
                 } else if (arg.startsWith("p:")) {
                     inProgress = arg.replace("p:", "");
                 } else if (arg.startsWith("r:")) {
@@ -93,12 +93,12 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
                 return full;
             }
             for (int i = 0; i < progress; i++) {
-                bar.append(competed);
+                bar.append(completed);
             }
-            if (bar.length() / competed.length() != length) {
+            if (bar.length() / completed.length() != length) {
                 bar.append(inProgress);
             }
-            barLength = (bar.toString().contains(inProgress) ? (bar.length() - inProgress.length()) + competed.length() : bar.length()) / competed.length();
+            barLength = (bar.toString().contains(inProgress) ? (bar.length() - inProgress.length()) + completed.length() : bar.length()) / completed.length();
             for (int i = barLength; i < length; i++) {
                 bar.append(remaining);
             }
