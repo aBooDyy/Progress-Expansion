@@ -20,14 +20,14 @@ Sets the symbol/text that is used for already completed progress.
 ### `p:`
 > **Requires**: `TEXT`  
 > **Default (Config option)**: `&e■` (`in_progress`)  
-> **Example**: `%progress_bar_{server_online}_c:&e|%`
+> **Example**: `%progress_bar_{server_online}_p:&e|%`
 
 Sets the symbol/text that is used for the current progress (Where it currently is).
 
 ### `r:`
 > **Requires**: `TEXT`  
 > **Default (Config option)**: `&7■` (`remaining`)  
-> **Example**: `%progress_bar_{server_online}_c:&7|%`
+> **Example**: `%progress_bar_{server_online}_r:&7|%`
 
 Sets the symbol/text that is used for the remaining progress.
 
@@ -42,7 +42,7 @@ For example will a length of `5` show 2/5 as completed while `10` would show 5/1
 ### `m:`
 > **Requires**: `NUMBER`  
 > **Default (Config option)**: `100` (`maximum_value`)  
-> **Example**: `%progress_bar_{server_online}_l:10%`
+> **Example**: `%progress_bar_{server_online}_m:10%`
 
 Sets the maximum value (Goal) of the progress. This affects the progress itself.  
 For example will `20` show progress 2/10 done while it not even shows 1/10 done with `100` when the current progress is `5`.
@@ -50,6 +50,6 @@ For example will `20` show progress 2/10 done while it not even shows 1/10 done 
 ### `fullbar:`
 > **Requires**: `TEXT`  
 > **Default (Config option)**: `&aCompleted` (`full`)  
-> **Example**: `%progress_bar_{server_online}_l:&aDone!%`
+> **Example**: `%progress_bar_{server_online}_fullbar:&aDone!%`
 
 Sets the text that is shown when progress is 100% (reached the set maximum value).
