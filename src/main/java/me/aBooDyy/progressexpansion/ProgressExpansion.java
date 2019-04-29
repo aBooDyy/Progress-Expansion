@@ -4,7 +4,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.Configurable;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.apache.commons.lang.math.NumberUtils;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,7 +45,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
     }
 
     @Override
-    public String onRequest(OfflinePlayer p, String identifier) {
+    public String onPlaceholderRequest(Player p, String identifier) {
         if (p == null) return null;
         if (identifier.startsWith("bar_")) {
             full = this.getString("full", "&aCompleted");
