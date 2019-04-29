@@ -93,18 +93,19 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             StringBuilder bar = new StringBuilder();
             amtPerSymbol = (double) max / length;
             progress = (int) Math.floor(placeholder / amtPerSymbol);
-            if (placeholder >= max) {
+            if (placeholder >= max)
                 return full;
-            }
-            for (int i = 0; i < progress; i++) {
+            while (barLength < progress) {
                 bar.append(completed);
+                barLength++;
             }
-            if (bar.length() / completed.length() != length) {
+            if (barLength != length) {
                 bar.append(inProgress);
+                barLength++;
             }
-            barLength = (bar.toString().contains(inProgress) ? (bar.length() - inProgress.length()) + completed.length() : bar.length()) / completed.length();
-            for (int i = barLength; i < length; i++) {
+            while (barLength < length) {
                 bar.append(remaining);
+                barLength++;
             }
             return bar.toString();
         }
