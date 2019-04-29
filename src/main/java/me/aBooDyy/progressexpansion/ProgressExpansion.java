@@ -13,6 +13,10 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
 
     private final String VERSION = getClass().getPackage().getImplementationVersion();
 
+    private String completed, inProgress, remaining, full;
+    private int progress, length, max, barLength;
+    private Double placeholder, amtPerSymbol;
+
     @Override
     public String getIdentifier() {
         return "progress";
@@ -39,10 +43,6 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
         defaults.put("maximum_value", 100);
         return defaults;
     }
-
-    private String completed, inProgress, remaining, full;
-    private int progress, length, max, barLength;
-    private Double placeholder, amtPerSymbol;
 
     @Override
     public String onRequest(OfflinePlayer p, String identifier) {
