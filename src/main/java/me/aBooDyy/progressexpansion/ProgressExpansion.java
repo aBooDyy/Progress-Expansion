@@ -61,29 +61,33 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
                 return "";
             }
             placeholder = Double.valueOf(args[0]);
-            for (String arg : args) {
-                if (arg.startsWith("c:")) {
-                    completed = arg.replace("c:", "");
-                } else if (arg.startsWith("p:")) {
-                    inProgress = arg.replace("p:", "");
-                } else if (arg.startsWith("r:")) {
-                    remaining = arg.replace("r:", "");
-                } else if (arg.startsWith("fullbar:")) {
-                    full = arg.replace("fullbar:", "");
-                } else if (arg.startsWith("l:")) {
-                    arg = arg.replace("l:", "");
-                    if (NumberUtils.isNumber(arg)) {
-                        if (Integer.valueOf(arg) >= 1074) {
-                            length = 1073;
-                        } else {
-                            length = Integer.parseInt(arg);
+            for (String argument : args) {
+                String[] arg = argument.split(":");
+                switch (arg[0]) {
+                    case "c":
+                        completed = arg[1];
+                        break;
+                    case "i":
+                    case "p":
+                        inProgress = arg[1];
+                        break;
+                    case "r":
+                        remaining = arg[1];
+                        break;
+                    case "fb":
+                    case "fullbar":
+                        full = arg[1];
+                        break;
+                    case "l":
+                        if (NumberUtils.isNumber(arg[1])) {
+                            length = Integer.parseInt(arg[1]);
                         }
-                    }
-                } else if (arg.startsWith("m:")) {
-                    arg = arg.replace("m:", "");
-                    if (NumberUtils.isNumber(arg)) {
-                        max = Integer.parseInt(arg);
-                    }
+                        break;
+                    case "m":
+                        if (NumberUtils.isNumber(arg[1])) {
+                            max = Integer.parseInt(arg[1]);
+                        }
+                        break;
                 }
             }
             StringBuilder bar = new StringBuilder();
