@@ -11,8 +11,6 @@ import java.util.Map;
 
 public class ProgressExpansion extends PlaceholderExpansion implements Configurable {
 
-    private final String VERSION = getClass().getPackage().getImplementationVersion();
-
     private String completed, inProgress, remaining, full;
     private int progress, length, max, barLength;
     private double placeholder, amtPerSymbol;
@@ -29,7 +27,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
 
     @Override
     public String getVersion() {
-        return VERSION;
+        return "1.2";
     }
 
     @Override
