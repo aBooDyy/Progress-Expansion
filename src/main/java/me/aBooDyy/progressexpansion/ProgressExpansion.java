@@ -15,7 +15,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
 
     private String completed, inProgress, remaining, full;
     private int progress, length, max, barLength;
-    private Double placeholder, amtPerSymbol;
+    private double placeholder, amtPerSymbol;
 
     @Override
     public String getIdentifier() {
