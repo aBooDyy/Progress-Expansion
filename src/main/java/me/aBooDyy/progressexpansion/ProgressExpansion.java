@@ -31,12 +31,12 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
     @Override
     public Map<String, Object> getDefaults() {
         Map<String, Object> defaults = new HashMap<>();
+        defaults.put("full", "&aCompleted");
         defaults.put("completed", "&a\u25A0");
         defaults.put("in_progress", "&e\u25A0");
         defaults.put("remaining", "&7\u25A0");
-        defaults.put("bar.length", 10);
-        defaults.put("bar.maximum_value", 100);
-        defaults.put("bar.full", "&aCompleted");
+        defaults.put("length", 10);
+        defaults.put("maximum_value", 100);
         return defaults;
     }
 
@@ -48,12 +48,12 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
     public String onRequest(OfflinePlayer p, String identifier) {
         if (p == null) return null;
         if (identifier.startsWith("bar_")) {
+            full = this.getString("full", "&aCompleted");
             completed = this.getString("completed", "&a\u25A0");
             inProgress = this.getString("in_progress", "&e\u25A0");
             remaining = this.getString("remaining", "&7\u25A0");
-            full = this.getString("bar.full", "&aCompleted");
-            length = this.getInt("bar.length", 10);
-            max = this.getInt("bar.maximum_value", 100);
+            length = this.getInt("length", 10);
+            max = this.getInt("maximum_value", 100);
 
             identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
             String[] args = identifier.replace("bar_", "").split("_");
