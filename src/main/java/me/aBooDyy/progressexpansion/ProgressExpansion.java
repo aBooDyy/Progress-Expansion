@@ -60,7 +60,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             }
             placeholder = Double.valueOf(args[0]);
             for (String argument : args) {
-                String[] arg = argument.split(":");
+                String[] arg = argument.split(":", 2);
                 switch (arg[0]) {
                     case "c":
                         completed = arg[1];
