@@ -27,7 +27,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
 
     @Override
     public String getVersion() {
-        return "1.2";
+        return "1.3";
     }
 
     @Override
