@@ -43,22 +43,16 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
     }
 
     @Override
-    public boolean register() {
-        full = this.getString("full", "&aCompleted");
-        completed = this.getString("completed", "&a\u25A0");
-        inProgress = this.getString("in_progress", "&e\u25A0");
-        remaining = this.getString("remaining", "&7\u25A0");
-        length = this.getInt("length", 10);
-        max = this.getInt("maximum_value", 100);
-
-        return super.register();
-    }
-
-    @Override
     public String onPlaceholderRequest(Player p, String identifier) {
         if (p == null) return null;
         if (identifier.startsWith("bar_")) {
             barLength = 0;
+            full = this.getString("full", "&aCompleted");
+            completed = this.getString("completed", "&a\u25A0");
+            inProgress = this.getString("in_progress", "&e\u25A0");
+            remaining = this.getString("remaining", "&7\u25A0");
+            length = this.getInt("length", 10);
+            max = this.getInt("maximum_value", 100);
 
             identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
             String[] args = identifier.replace("bar_", "").split("_");
