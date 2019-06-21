@@ -58,6 +58,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
     public String onPlaceholderRequest(Player p, String identifier) {
         if (p == null) return null;
         if (identifier.startsWith("bar_")) {
+            barLength = 0;
 
             identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
             String[] args = identifier.replace("bar_", "").split("_");
