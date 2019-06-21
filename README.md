@@ -1,11 +1,11 @@
 [available placeholder]: https://helpch.at/placeholders
 
 # Progress-Expansion
-This expansion allows you to display the progress of a placeholder.  
+This is a [PlaceholderAPI](http://placeholderapi.com/) expansion that allows you to display the progress of a placeholder.
 You can customize what symbols are shown, the text when it is completed and what the maximum value is.
 
 ## Placeholders
-The expansion provides one placeholder that can be customized with additional values/options.  
+The expansion provides one placeholder that can be customized with additional values/options.
 If a option provides a invalid value, then the default one set in the config.yml of PlaceholderAPI is used.
 
 The default placeholder is `%progress_bar_{placeholder}%` where `{placeholder}` can be any [available placeholder] that returns a number.
@@ -53,3 +53,13 @@ For example will `20` show progress 2/10 done while it not even shows 1/10 done 
 > **Example**: `%progress_bar_{server_online}_fullbar:&aDone!%`
 
 Sets the text that is shown when progress is 100% (reached the set maximum value).
+
+# Download
+You can download this expansion automatically using PAPI download commands:
+
+> ```
+> /papi ecloud download Progress
+> /papi reload
+> ```
+
+Or you can download it manaually from the [eCloud](https://api.extendedclip.com/expansions/progress/) and then put it in the `expansions` folder (Path: `/plugins/PlaceholderAPI/expansions/`)
