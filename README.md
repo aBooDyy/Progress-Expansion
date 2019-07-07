@@ -11,52 +11,52 @@ If a option provides a invalid value, then the default one set in the config.yml
 ### `%progress_bar_{placeholder}%`
 
 #### `{placeholder}` (**Required field**)
-> **Requires**: A placeholder that retuns a number. [Available placeholders] <br />
+> **Requires**: A placeholder that retuns a number OR a letter (A-Z). [Available placeholders] <br />
 > **Example**: `%progress_bar_{server_online}%`
 
-The number that the progress bar will based on.
+The number that the progress bar will based on. For letters, it will be so `a` = 1, `z` = 26
 
 #### `c:`
-> **Requires**: `TEXT`
-> **Default (Config option)**: `&a■` (`completed`)
-> **Example**: `%progress_bar_{server_online}_c:&a|%`
+> **Requires**: `TEXT` <br />
+> **Default (Config option)**: `&a■` (`completed`) <br />
+> **Example**: `%progress_bar_{server_online}_c:&a|%` <br />
 
 Sets the symbol/text that is used for already completed progress.
 
 #### `p:`
-> **Requires**: `TEXT`
-> **Default (Config option)**: `&e■` (`in_progress`)
-> **Example**: `%progress_bar_{server_online}_p:&e|%`
+> **Requires**: `TEXT` <br />
+> **Default (Config option)**: `&e■` (`in_progress`) <br />
+> **Example**: `%progress_bar_{server_online}_p:&e|%` <br />
 
 Sets the symbol/text that is used for the current progress (Where it currently is).
 
 #### `r:`
-> **Requires**: `TEXT`
-> **Default (Config option)**: `&7■` (`remaining`)
-> **Example**: `%progress_bar_{server_online}_r:&7|%`
+> **Requires**: `TEXT` <br />
+> **Default (Config option)**: `&7■` (`remaining`) <br />
+> **Example**: `%progress_bar_{server_online}_r:&7|%` <br />
 
 Sets the symbol/text that is used for the remaining progress.
 
 #### `l:`
-> **Requires**: `NUMBER`
-> **Default (Config option)**: `10` (`length`)
-> **Example**: `%progress_bar_{server_online}_l:5%`
+> **Requires**: `NUMBER` <br />
+> **Default (Config option)**: `10` (`length`) <br />
+> **Example**: `%progress_bar_{server_online}_l:5%` <br />
 
 Sets the maximum lenth of the progressbar. This also affects the progress itself.
 For example will a length of `5` show 2/5 as completed while `10` would show 5/10 if the progress is currently 50%.
 
 #### `m:`
-> **Requires**: `NUMBER`
-> **Default (Config option)**: `100` (`maximum_value`)
-> **Example**: `%progress_bar_{server_online}_m:10%`
+> **Requires**: `NUMBER` <br />
+> **Default (Config option)**: `100` (`maximum_value`) <br />
+> **Example**: `%progress_bar_{server_online}_m:10%` <br />
 
 Sets the maximum value (Goal) of the progress. This affects the progress itself.
 For example will `20` show progress 2/10 done while it not even shows 1/10 done with `100` when the current progress is `5`.
 
 #### `fullbar:`
-> **Requires**: `TEXT`
-> **Default (Config option)**: `&aCompleted` (`full`)
-> **Example**: `%progress_bar_{server_online}_fullbar:&aDone!%`
+> **Requires**: `TEXT` <br />
+> **Default (Config option)**: `&aCompleted` (`full`) <br />
+> **Example**: `%progress_bar_{server_online}_fullbar:&aDone!%` <br />
 
 Sets the text that is shown when progress is 100% (reached the set maximum value).
 
@@ -64,22 +64,22 @@ Sets the text that is shown when progress is 100% (reached the set maximum value
 ### `%progress_percentage_{placeholder}%`
 
 #### `{placeholder}` (**Required field**)
-> **Requires**: A placeholder that retuns a number. [Available placeholders] <br />
+> **Requires**: A placeholder that retuns a number OR a letter (A-Z). [Available placeholders]
 > **Example**: `%progress_percentage_{server_online}%`
 
-The number that the percentage will be based on.
+The number that the percentage will be based on. For letters, it will be so `a` = 1, `z` = 26
 
 #### `m:`
 > **Requires**: `NUMBER`
-> **Default (Config option)**: `100` (`maximum_value`)
-> **Example**: `%progress_percentage_{server_online}_m:100%`
+> **Default (Config option)**: `100` (`maximum_value`) <br />
+> **Example**: `%progress_percentage_{server_online}_m:100%` <br />
 
 Sets the maximum value (Goal) of the percentage. This affects the percentage itself.
 
 #### `d:`
-> **Requires**: `NUMBER`
-> **Default (Config option)**: `2` (`decimal`)
-> **Example**: `%progress_percentage_{server_online}_d:0%`
+> **Requires**: `NUMBER` <br />
+> **Default (Config option)**: `2` (`decimal`) <br />
+> **Example**: `%progress_percentage_{server_online}_d:0%` <br />
 
 Sets the amount of decimals that will be shown.
 For example, with `d:3` if the percentage is `50` it will return `50.000`
