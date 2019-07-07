@@ -72,6 +72,8 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
                             decimal = Integer.parseInt(arg[1]);
                 }
             }
+            if (placeholder >= max) return "100";
+
             StringBuilder f = new StringBuilder("#");
             if (decimal > 0) {
                 f.append(".");
