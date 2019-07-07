@@ -56,11 +56,13 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
 
             identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
             String[] args = identifier.replace("bar_", "").split("_");
-            if (!NumberUtils.isNumber(args[0])) {
+            if (!NumberUtils.isNumber(args[0]) && !args[0].toLowerCase().matches("[a-z]")) {
                 return "";
             }
-            placeholder = Double.valueOf(args[0]);
+            if (NumberUtils.isNumber(args[0])) placeholder = Double.valueOf(args[0]);
+            else placeholder = Character.getNumericValue(args[0].charAt(0)) - 9;
             for (String argument : args) {
+                if (argument.equals(args[0])) continue;
                 String[] arg = argument.split(":", 2);
                 switch (arg[0]) {
                     case "c":
