@@ -53,10 +53,12 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             decimal = this.getInt("decimal", 2);
 
             identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
+            identifier = PlaceholderAPI.setPlaceholders(p, identifier);
             String[] args = identifier.replace("percentage_", "").split("_");
-            if (!NumberUtils.isNumber(args[0]) && !args[0].toLowerCase().matches("[a-z]")) {
+
+            if (!NumberUtils.isNumber(args[0]) && !args[0].toLowerCase().matches("[a-z]"))
                 return "";
-            }
+
             if (NumberUtils.isNumber(args[0])) placeholder = Double.valueOf(args[0]);
             else placeholder = Character.getNumericValue(args[0].charAt(0)) - 9;
             for (String argument : args) {
@@ -97,10 +99,12 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             max = this.getInt("maximum_value", 100);
 
             identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
+            identifier = PlaceholderAPI.setPlaceholders(p, identifier);
             String[] args = identifier.replace("bar_", "").split("_");
-            if (!NumberUtils.isNumber(args[0]) && !args[0].toLowerCase().matches("[a-z]")) {
+
+            if (!NumberUtils.isNumber(args[0]) && !args[0].toLowerCase().matches("[a-z]"))
                 return "";
-            }
+
             if (NumberUtils.isNumber(args[0])) placeholder = Double.valueOf(args[0]);
             else placeholder = Character.getNumericValue(args[0].charAt(0)) - 9;
             for (String argument : args) {
