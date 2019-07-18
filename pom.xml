@@ -7,7 +7,7 @@
     <groupId>me.aBooDyy.progressexpansion</groupId>
     <artifactId>Progress-Expansion</artifactId>
     <name>PAPI-Expansion-Progress</name>
-    <version>1.6</version>
+    <version>1.5</version>
     <build>
         <plugins>
             <plugin>
