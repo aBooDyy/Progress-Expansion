@@ -11,7 +11,7 @@ If a option provides a invalid value, then the default one set in the config.yml
 ### `%progress_bar_{placeholder}%`
 
 #### `{placeholder}` (**Required field**)
-> **Requires**: A placeholder that returns a number OR a letter (A-Z). [Available placeholders] <br />
+> **Requires**: A placeholder that retuns a number OR a letter (A-Z). [Available placeholders] <br />
 > **Example**: `%progress_bar_{server_online}%`
 
 The number that the progress bar will based on. For letters, it will be so `a` = 1, `z` = 26
@@ -42,7 +42,7 @@ Sets the symbol/text that is used for the remaining progress.
 > **Default (Config option)**: `10` (`length`) <br />
 > **Example**: `%progress_bar_{server_online}_l:5%` <br />
 
-Sets the maximum length of the progress bar. This also affects the progress itself.
+Sets the maximum lenth of the progressbar. This also affects the progress itself.
 For example will a length of `5` show 2/5 as completed while `10` would show 5/10 if the progress is currently 50%.
 
 #### `m:`
