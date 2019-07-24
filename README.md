@@ -64,13 +64,13 @@ Sets the text that is shown when progress is 100% (reached the set maximum value
 ### `%progress_percentage_{placeholder}%`
 
 #### `{placeholder}` (**Required field**)
-> **Requires**: A placeholder that retuns a number OR a letter (A-Z). [Available placeholders]
+> **Requires**: A placeholder that retuns a number OR a letter (A-Z). [Available placeholders] <br />
 > **Example**: `%progress_percentage_{server_online}%`
 
 The number that the percentage will be based on. For letters, it will be so `a` = 1, `z` = 26
 
 #### `m:`
-> **Requires**: `NUMBER`
+> **Requires**: `NUMBER` <br />
 > **Default (Config option)**: `100` (`maximum_value`) <br />
 > **Example**: `%progress_percentage_{server_online}_m:100%` <br />
 
