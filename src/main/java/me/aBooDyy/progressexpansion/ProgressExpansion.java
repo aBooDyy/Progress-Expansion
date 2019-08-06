@@ -28,7 +28,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
 
     @Override
     public String getVersion() {
-        return "1.5";
+        return "1.6";
     }
 
     @Override
@@ -48,11 +48,13 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
     public String onPlaceholderRequest(Player p, String identifier) {
         if (p == null) return null;
 
+        identifier = PlaceholderAPI.setPlaceholders(p, identifier.replaceAll("\\$\\((.*?)\\)\\$", "%$1%"));
+        identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
+
         if (identifier.startsWith("percentage_")) {
             max = this.getInt("maximum_value", 100);
             decimal = this.getInt("decimal", 2);
 
-            identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
             String[] args = identifier.replace("percentage_", "").split("_");
             if (!NumberUtils.isNumber(args[0]) && !args[0].toLowerCase().matches("[a-z]")) {
                 return "";
@@ -96,7 +98,6 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             length = this.getInt("length", 10);
             max = this.getInt("maximum_value", 100);
 
-            identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
             String[] args = identifier.replace("bar_", "").split("_");
             if (!NumberUtils.isNumber(args[0]) && !args[0].toLowerCase().matches("[a-z]")) {
                 return "";
