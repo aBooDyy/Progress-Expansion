@@ -13,10 +13,6 @@ import java.util.Map;
 
 public class ProgressExpansion extends PlaceholderExpansion implements Configurable {
 
-    private String completed, inProgress, remaining, full;
-    private int progress, length, max, barLength, decimal;
-    private double placeholder, amtPerSymbol;
-
     @Override
     public String getIdentifier() {
         return "progress";
@@ -48,6 +44,10 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
     @Override
     public String onPlaceholderRequest(Player p, String identifier) {
         if (p == null) return null;
+
+        String completed, inProgress, remaining, full;
+        int progress, length, max, barLength, decimal;
+        double placeholder, amtPerSymbol;
 
         identifier = PlaceholderAPI.setPlaceholders(p, identifier.replaceAll("\\$\\((.*?)\\)\\$", "%$1%"));
         identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
