@@ -4,6 +4,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.Configurable;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.apache.commons.lang.math.NumberUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.text.DecimalFormat;
@@ -56,11 +57,8 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             decimal = this.getInt("decimal", 2);
 
             String[] args = identifier.replace("percentage_", "").split("_");
-            if (!NumberUtils.isNumber(args[0]) && !args[0].toLowerCase().matches("[a-z]")) {
-                return "";
-            }
-            if (NumberUtils.isNumber(args[0])) placeholder = Double.valueOf(args[0]);
-            else placeholder = Character.getNumericValue(args[0].charAt(0)) - 9;
+            placeholder = getNumber(args[0]);
+
             for (String argument : args) {
                 if (argument.equals(args[0])) continue;
                 String[] arg = argument.split(":", 2);
@@ -99,11 +97,8 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             max = this.getInt("maximum_value", 100);
 
             String[] args = identifier.replace("bar_", "").split("_");
-            if (!NumberUtils.isNumber(args[0]) && !args[0].toLowerCase().matches("[a-z]")) {
-                return "";
-            }
-            if (NumberUtils.isNumber(args[0])) placeholder = Double.valueOf(args[0]);
-            else placeholder = Character.getNumericValue(args[0].charAt(0)) - 9;
+            placeholder = getNumber(args[0]);
+
             for (String argument : args) {
                 if (argument.equals(args[0])) continue;
                 String[] arg = argument.split(":", 2);
@@ -151,5 +146,17 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             return bar.toString();
         }
         return null;
+    }
+
+    private double getNumber(String text) {
+        if (text.toLowerCase().matches("[a-z]"))
+            return Character.getNumericValue(text.charAt(0)) - 9;
+
+        try {
+            return Double.parseDouble(text);
+        } catch (NumberFormatException e) {
+            Bukkit.getLogger().info("[Progress] Couldn't get the number from " + text + ". The progress will be 0%.");
+            return 0;
+        }
     }
 }
