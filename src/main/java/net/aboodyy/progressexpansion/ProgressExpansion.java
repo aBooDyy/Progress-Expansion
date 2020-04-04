@@ -1,4 +1,4 @@
-package me.aBooDyy.progressexpansion;
+package net.aboodyy.progressexpansion;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.Configurable;
