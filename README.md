@@ -2,7 +2,7 @@
 
 # Progress-Expansion
 This is a [PlaceholderAPI](http://placeholderapi.com/) expansion that allows you to display the progress related placeholders based on your inputs.
-For bar placholder, You can customize what symbols are shown, the text when it is completed and what the maximum value is.
+For bar placeholder, You can customize what symbols are shown, the text when it is completed and what the maximum value is.
 
 ## Placeholders
 The expansion provides two placeholders that can be customized with additional values/options.
@@ -64,7 +64,7 @@ Sets the text that is shown when progress is 100% (reached the set maximum value
 ### `%progress_percentage_{placeholder}%`
 
 #### `{placeholder}` (**Required field**)
-> **Requires**: A placeholder that retuns a number OR a letter (A-Z). [Available placeholders] <br />
+> **Requires**: A placeholder that returns a number OR a letter (A-Z). [Available placeholders] <br />
 > **Example**: `%progress_percentage_{server_online}%`
 
 The number that the percentage will be based on. For letters, it will be so `a` = 1, `z` = 26
@@ -92,4 +92,4 @@ You can download this expansion automatically using PAPI download commands:
 > /papi reload
 > ```
 
-Or you can download it manaually from the [eCloud](https://api.extendedclip.com/expansions/progress/) and then put it in the `expansions` folder (Path: `/plugins/PlaceholderAPI/expansions/`)
+Or you can download it manually from the [eCloud](https://api.extendedclip.com/expansions/progress/) and then put it in the `expansions` folder (Path: `/plugins/PlaceholderAPI/expansions/`)
