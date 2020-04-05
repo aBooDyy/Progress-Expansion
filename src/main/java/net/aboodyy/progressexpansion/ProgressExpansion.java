@@ -58,6 +58,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
         defaults.put("length", 10);
         defaults.put("maximum_value", 100);
         defaults.put("decimal", 2);
+        defaults.put("replace_placeholder", new String[]{",;."});
         return defaults;
     }
 
@@ -172,11 +173,26 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
         if (text.toLowerCase().matches("[a-z]"))
             return Character.getNumericValue(text.charAt(0)) - 9;
 
+        text = replaceNumbers(text);
+
         try {
             return Double.parseDouble(text);
         } catch (NumberFormatException e) {
             Bukkit.getLogger().info("[Progress] Couldn't get the number from " + text + ". The progress will be 0%.");
             return 0;
         }
+    }
+
+    private String replaceNumbers(String number) {
+        String[] replace;
+
+        for (String element : getStringList("replace_placeholder")) {
+            replace = element.split(";", 2);
+            if (replace.length != 2) continue;
+
+            number = number.replace(replace[0], replace[1]);
+        }
+
+        return number;
     }
 }
