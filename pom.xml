@@ -7,7 +7,7 @@
     <groupId>net.aboodyy.progressexpansion</groupId>
     <artifactId>progress-expansion</artifactId>
     <name>Expansion-Progress</name>
-    <version>1.7</version>
+    <version>1.8</version>
 
     <repositories>
         <repository>
