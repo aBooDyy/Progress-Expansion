@@ -25,7 +25,7 @@ import me.clip.placeholderapi.expansion.Configurable;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
+import org.bukkit.OfflinePlayer;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -63,7 +63,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
     }
 
     @Override
-    public String onPlaceholderRequest(Player p, String identifier) {
+    public String onRequest(OfflinePlayer p, String identifier) {
         if (p == null) return null;
 
         String completed, inProgress, remaining, full;
