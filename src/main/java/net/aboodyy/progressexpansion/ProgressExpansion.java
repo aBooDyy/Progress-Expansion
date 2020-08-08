@@ -18,6 +18,12 @@
 
 */
 
+/*
+This "new" code.
+only changes the int to double so players that have a progressbar thats higher than 999million.
+example: %progress_bar_{vault_eco_balance_fixed}_c:&a:_p:&e:_r:&7:_l:10_m:100000000000000_fullbar:&a&lCOMPLETED% (this works fine) before changing the int it didnt
+*/
+
 package net.aboodyy.progressexpansion;
 
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -67,15 +73,15 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
         if (p == null) return null;
 
         String completed, inProgress, remaining, full;
-        int progress, length, max, barLength, decimal;
+        double progress, length, max, barLength, decimal;
         double placeholder, amtPerSymbol;
 
         identifier = PlaceholderAPI.setPlaceholders(p, identifier.replaceAll("\\$\\((.*?)\\)\\$", "%$1%"));
         identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
 
         if (identifier.startsWith("percentage_")) {
-            max = this.getInt("maximum_value", 100);
-            decimal = this.getInt("decimal", 2);
+            max = this.getDouble("maximum_value", 100);
+            decimal = this.getDouble("decimal", 2);
 
             String[] args = identifier.replace("percentage_", "").split("_");
             placeholder = getNumber(args[0]);
@@ -86,11 +92,11 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
                 switch (arg[0]) {
                     case "m":
                         if (NumberUtils.isNumber(arg[1]))
-                            max = Integer.parseInt(arg[1]);
+                            max = Double.parseDouble(arg[1]);
                         break;
                     case "d":
                         if (NumberUtils.isNumber(arg[1]))
-                            decimal = Integer.parseInt(arg[1]);
+                            decimal = Double.parseDouble(arg[1]);
                 }
             }
             if (placeholder >= max) return "100";
@@ -98,7 +104,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             StringBuilder f = new StringBuilder("#");
             if (decimal > 0) {
                 f.append(".");
-                for (int i = 0; i < decimal; i++) {
+                for (double i = 0; i < decimal; i++) {
                     f.append("0");
                 }
             }
@@ -114,8 +120,8 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             completed = this.getString("completed", "&a\u25A0");
             inProgress = this.getString("in_progress", "&e\u25A0");
             remaining = this.getString("remaining", "&7\u25A0");
-            length = this.getInt("length", 10);
-            max = this.getInt("maximum_value", 100);
+            length = this.getDouble("length", 10);
+            max = this.getDouble("maximum_value", 100);
 
             String[] args = identifier.replace("bar_", "").split("_");
             placeholder = getNumber(args[0]);
@@ -140,16 +146,16 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
                         break;
                     case "l":
                         if (NumberUtils.isNumber(arg[1]))
-                            length = Integer.parseInt(arg[1]);
+                            length = Double.parseDouble(arg[1]);
                         break;
                     case "m":
                         if (NumberUtils.isNumber(arg[1]))
-                            max = Integer.parseInt(arg[1]);
+                            max = Double.parseDouble(arg[1]);
                 }
             }
             StringBuilder bar = new StringBuilder();
-            amtPerSymbol = (double) max / length;
-            progress = (int) Math.floor(placeholder / amtPerSymbol);
+            amtPerSymbol = max / length;
+            progress = Math.floor(placeholder / amtPerSymbol);
             if (placeholder >= max)
                 return full;
             while (barLength < progress) {
