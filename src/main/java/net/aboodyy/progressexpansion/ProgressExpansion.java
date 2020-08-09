@@ -66,15 +66,26 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
     public String onRequest(OfflinePlayer p, String identifier) {
         if (p == null) return null;
 
-        String completed, inProgress, remaining, full;
-        int progress, length, max, barLength, decimal;
-        double placeholder, amtPerSymbol;
+        String completed;
+        String inProgress;
+        String remaining;
+        String full;
+
+        int progress;
+        int length;
+        int barLength;
+        int decimal;
+
+        long max;
+
+        double placeholder;
+        double amtPerSymbol;
 
         identifier = PlaceholderAPI.setPlaceholders(p, identifier.replaceAll("\\$\\((.*?)\\)\\$", "%$1%"));
         identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
 
         if (identifier.startsWith("percentage_")) {
-            max = this.getInt("maximum_value", 100);
+            max = this.getLong("maximum_value", 100);
             decimal = this.getInt("decimal", 2);
 
             String[] args = identifier.replace("percentage_", "").split("_");
@@ -86,7 +97,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
                 switch (arg[0]) {
                     case "m":
                         if (NumberUtils.isNumber(arg[1]))
-                            max = Integer.parseInt(arg[1]);
+                            max = Long.parseLong(arg[1]);
                         break;
                     case "d":
                         if (NumberUtils.isNumber(arg[1]))
@@ -115,7 +126,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             inProgress = this.getString("in_progress", "&e\u25A0");
             remaining = this.getString("remaining", "&7\u25A0");
             length = this.getInt("length", 10);
-            max = this.getInt("maximum_value", 100);
+            max = this.getLong("maximum_value", 100);
 
             String[] args = identifier.replace("bar_", "").split("_");
             placeholder = getNumber(args[0]);
@@ -144,7 +155,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
                         break;
                     case "m":
                         if (NumberUtils.isNumber(arg[1]))
-                            max = Integer.parseInt(arg[1]);
+                            max = Long.parseLong(arg[1]);
                 }
             }
             StringBuilder bar = new StringBuilder();
