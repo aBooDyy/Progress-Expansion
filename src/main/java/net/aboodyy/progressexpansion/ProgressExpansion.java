@@ -63,8 +63,8 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
     }
 
     @Override
-    public String onRequest(OfflinePlayer p, String identifier) {
-        if (p == null) return null;
+    public String onRequest(OfflinePlayer player, String identifier) {
+        if (player == null) return null;
 
         String completed;
         String inProgress;
@@ -81,8 +81,8 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
         double placeholder;
         double amtPerSymbol;
 
-        identifier = PlaceholderAPI.setPlaceholders(p, identifier.replaceAll("\\$\\((.*?)\\)\\$", "%$1%"));
-        identifier = PlaceholderAPI.setBracketPlaceholders(p, identifier);
+        identifier = PlaceholderAPI.setPlaceholders(player, identifier.replaceAll("\\$\\((.*?)\\)\\$", "%$1%"));
+        identifier = PlaceholderAPI.setBracketPlaceholders(player, identifier);
 
         if (identifier.startsWith("percentage_")) {
             max = this.getLong("maximum_value", 100);
