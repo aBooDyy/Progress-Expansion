@@ -31,6 +31,7 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("unused")
 public class ProgressExpansion extends PlaceholderExpansion implements Configurable {
 
     @Override
@@ -76,16 +77,15 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
         int barLength;
         int decimal;
 
-        long max;
-
         double placeholder;
+        double max;
         double amtPerSymbol;
 
         identifier = PlaceholderAPI.setPlaceholders(player, identifier.replaceAll("\\$\\((.*?)\\)\\$", "%$1%"));
         identifier = PlaceholderAPI.setBracketPlaceholders(player, identifier);
 
         if (identifier.startsWith("percentage_")) {
-            max = this.getLong("maximum_value", 100);
+            max = this.getDouble("maximum_value", 100);
             decimal = this.getInt("decimal", 2);
 
             String[] args = identifier.replace("percentage_", "").split("_");
@@ -126,7 +126,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             inProgress = this.getString("in_progress", "&e\u25A0");
             remaining = this.getString("remaining", "&7\u25A0");
             length = this.getInt("length", 10);
-            max = this.getLong("maximum_value", 100);
+            max = this.getDouble("maximum_value", 100);
 
             String[] args = identifier.replace("bar_", "").split("_");
             placeholder = getNumber(args[0]);
@@ -159,7 +159,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
                 }
             }
             StringBuilder bar = new StringBuilder();
-            amtPerSymbol = (double) max / length;
+            amtPerSymbol = max / length;
             progress = (int) Math.floor(placeholder / amtPerSymbol);
             if (placeholder >= max)
                 return full;
