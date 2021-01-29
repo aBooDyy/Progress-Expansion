@@ -96,8 +96,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
                 String[] arg = argument.split(":", 2);
                 switch (arg[0]) {
                     case "m":
-                        if (NumberUtils.isNumber(arg[1]))
-                            max = Long.parseLong(arg[1]);
+                        max = getNumber(arg[1]);
                         break;
                     case "d":
                         if (NumberUtils.isNumber(arg[1]))
@@ -105,6 +104,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
                 }
             }
             if (placeholder >= max) return "100";
+            if (max == 0) return "0";
 
             StringBuilder f = new StringBuilder("#");
             if (decimal > 0) {
@@ -154,8 +154,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
                             length = Integer.parseInt(arg[1]);
                         break;
                     case "m":
-                        if (NumberUtils.isNumber(arg[1]))
-                            max = Long.parseLong(arg[1]);
+                        max = getNumber(arg[1]);
                 }
             }
             StringBuilder bar = new StringBuilder();
