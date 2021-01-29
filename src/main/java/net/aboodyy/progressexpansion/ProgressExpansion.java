@@ -198,9 +198,12 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
 
         for (String element : getStringList("replace_placeholder")) {
             replace = element.split(";", 2);
-            if (replace.length != 2) continue;
 
-            number = number.replace(replace[0], replace[1]);
+            if (replace.length == 2) {
+                number = number.replace(replace[0], replace[1]);
+            } else {
+                number = number.replace(replace[0], "");
+            }
         }
 
         return number;
