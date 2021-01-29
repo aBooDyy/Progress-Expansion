@@ -1,7 +1,7 @@
 /*
 
     Progress Expansion - A PlaceholderAPI expansion that allows you to create a progress bar placeholder based on your inputs
-    Copyright (C) 2019-2020 aBooDyy
+    Copyright (C) 2019-2021 aBooDyy
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -46,7 +46,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
 
     @Override
     public String getVersion() {
-        return "2.0";
+        return "2.1";
     }
 
     @Override
