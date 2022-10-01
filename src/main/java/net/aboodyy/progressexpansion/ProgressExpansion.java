@@ -46,7 +46,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
 
     @Override
     public String getVersion() {
-        return "2.1";
+        return "2.2";
     }
 
     @Override
@@ -106,7 +106,7 @@ public class ProgressExpansion extends PlaceholderExpansion implements Configura
             if (placeholder >= max) return "100";
             if (max == 0) return "0";
 
-            StringBuilder f = new StringBuilder("#");
+            StringBuilder f = new StringBuilder("0");
             if (decimal > 0) {
                 f.append(".");
                 for (int i = 0; i < decimal; i++) {
